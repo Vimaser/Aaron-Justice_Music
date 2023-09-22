@@ -1,0 +1,10 @@
+export { default as Header } from './Header';
+export { default as Footer } from './Footer';
+export { default as Contact } from './Contact';
+export { default as Events } from './Events';
+export { default as Gallery } from './Gallery';
+export { default as Music } from './Music';
+export { default as Home } from './Home';
+export { default as Admin } from './Admin';
+export { default as ProtectedRoute } from './ProtectedRoute';
+export { default as Login } from './Login';
