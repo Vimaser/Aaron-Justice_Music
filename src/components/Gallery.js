@@ -1,16 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
+import app from '../firebase';
 
 const Gallery = () => {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const storage = getStorage(app);
+        const galleryRef = ref(storage, 'gallery');
+        const imageRefs = await listAll(galleryRef);
+        const imageURLs = await Promise.all(imageRefs.items.map(itemRef => getDownloadURL(itemRef)));
+        setImages(imageURLs);
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+
+    fetchImages();
+  }, []);
+
   return (
     <div>
       <h1>Gallery</h1>
       <section>
-        {/* Replace with actual image data */}
-        <figure>
-          <img src="imageURL" alt="description" />
-          <figcaption>Image Description</figcaption>
-        </figure>
-        {/* Repeat for more images */}
+        {images.map((url, index) => (
+          <figure key={index}>
+            <img src={url} alt={`Gallery Image ${index + 1}`} />
+            <figcaption>{`Gallery Image ${index + 1}`}</figcaption>
+          </figure>
+        ))}
       </section>
     </div>
   );
