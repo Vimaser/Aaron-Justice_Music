@@ -117,6 +117,7 @@ const Admin = () => {
       console.error("Error deleting music:", error);
     }
   };
+
   const handleImageUpload = async () => {
     try {
       const storageRef = ref(getStorage(app), "gallery/" + image.name);
@@ -125,13 +126,22 @@ const Admin = () => {
 
       const db = getFirestore(app);
       const galleryCollection = collection(db, "Gallery");
-      await addDoc(galleryCollection, {
+      const docRef = await addDoc(galleryCollection, {
         title: imageTitle,
         url: downloadURL,
       });
 
       setImage(null);
       setImageTitle("");
+
+      setGallery((prevGallery) => [
+        ...prevGallery,
+        {
+          id: docRef.id,
+          title: imageTitle,
+          url: downloadURL,
+        },
+      ]);
     } catch (error) {
       console.error("Error uploading image:", error);
     }
@@ -158,7 +168,7 @@ const Admin = () => {
       }
 
       const storageRef = ref(getStorage(app), fileName);
-      console.log("Full Path:", storageRef.fullPath); 
+      console.log("Full Path:", storageRef.fullPath);
 
       try {
         await deleteObject(storageRef);
