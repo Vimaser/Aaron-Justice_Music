@@ -50,7 +50,6 @@ const Admin = () => {
       console.error("Error uploading music:", error);
     }
   };
-  
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -123,47 +122,59 @@ const Admin = () => {
       const storageRef = ref(getStorage(app), "gallery/" + image.name);
       await uploadBytes(storageRef, image);
       const downloadURL = await getDownloadURL(storageRef);
-  
+
       const db = getFirestore(app);
       const galleryCollection = collection(db, "Gallery");
       await addDoc(galleryCollection, {
         title: imageTitle,
         url: downloadURL,
       });
-  
+
       setImage(null);
       setImageTitle("");
     } catch (error) {
       console.error("Error uploading image:", error);
     }
   };
-  
+
   const handleDeleteImage = async (image) => {
     try {
-      // Log the image object for debugging
-      console.log('Deleting image:', image);
-      
-      // Check if image.fileName exists and construct the correct path for Firebase Storage
-      if (image.fileName) {
-        const storageRef = ref(getStorage(app), "gallery/" + image.fileName);
-        await deleteObject(storageRef);
-      } else {
-        console.error("Error: image.fileName is undefined");
-        return;
+      console.log("Deleting image:", image);
+
+      let fileName = image.fileName;
+      if (!fileName) {
+        console.warn(
+          "Warning: image.fileName is undefined, extracting fileName from URL"
+        );
+        const urlParts = image.url.split("/");
+        fileName = decodeURIComponent(
+          urlParts[urlParts.length - 1].split("?")[0]
+        );
       }
-  
-      // Deleting the corresponding document from Firestore using image.id
+
+      const pathPrefix = "gallery/";
+      if (!fileName.startsWith(pathPrefix)) {
+        fileName = pathPrefix + fileName;
+      }
+
+      const storageRef = ref(getStorage(app), fileName);
+      console.log("Full Path:", storageRef.fullPath); 
+
+      try {
+        await deleteObject(storageRef);
+      } catch (error) {
+        console.error("Error deleting from Firebase Storage:", error);
+      }
+
       const db = getFirestore(app);
       await deleteDoc(doc(db, "Gallery", image.id));
-  
-      // Updating the local gallery state
+
       setGallery(gallery.filter((item) => item.id !== image.id));
     } catch (error) {
       console.error("Error deleting image:", error);
     }
   };
-  
-  
+
   return (
     <div>
       <h1>Admin Panel</h1>
