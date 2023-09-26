@@ -50,26 +50,7 @@ const Admin = () => {
       console.error("Error uploading music:", error);
     }
   };
-
-  const handleImageUpload = async () => {
-    try {
-      const storageRef = ref(getStorage(app), "gallery/" + image.name);
-      await uploadBytes(storageRef, image);
-      const downloadURL = await getDownloadURL(storageRef);
-
-      const db = getFirestore(app);
-      const galleryCollection = collection(db, "Gallery");
-      await addDoc(galleryCollection, {
-        title: imageTitle,
-        url: downloadURL,
-      });
-
-      setImage(null);
-      setImageTitle("");
-    } catch (error) {
-      console.error("Error uploading image:", error);
-    }
-  };
+  
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -124,20 +105,6 @@ const Admin = () => {
     setEvents((events) => events.filter((event) => event.id !== id));
   };
 
-  const handleDeleteImage = async (image) => {
-    try {
-      const storageRef = ref(getStorage(app), "gallery/" + image.title);
-      await deleteObject(storageRef);
-
-      const db = getFirestore(app);
-      await deleteDoc(doc(db, "Gallery", image.id));
-
-      setGallery(gallery.filter((item) => item.id !== image.id));
-    } catch (error) {
-      console.error("Error deleting image:", error);
-    }
-  };
-
   const handleDeleteMusic = async (music) => {
     try {
       const storageRef = ref(getStorage(app), "music/" + music.title);
@@ -151,7 +118,52 @@ const Admin = () => {
       console.error("Error deleting music:", error);
     }
   };
-
+  const handleImageUpload = async () => {
+    try {
+      const storageRef = ref(getStorage(app), "gallery/" + image.name);
+      await uploadBytes(storageRef, image);
+      const downloadURL = await getDownloadURL(storageRef);
+  
+      const db = getFirestore(app);
+      const galleryCollection = collection(db, "Gallery");
+      await addDoc(galleryCollection, {
+        title: imageTitle,
+        url: downloadURL,
+      });
+  
+      setImage(null);
+      setImageTitle("");
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
+  
+  const handleDeleteImage = async (image) => {
+    try {
+      // Log the image object for debugging
+      console.log('Deleting image:', image);
+      
+      // Check if image.fileName exists and construct the correct path for Firebase Storage
+      if (image.fileName) {
+        const storageRef = ref(getStorage(app), "gallery/" + image.fileName);
+        await deleteObject(storageRef);
+      } else {
+        console.error("Error: image.fileName is undefined");
+        return;
+      }
+  
+      // Deleting the corresponding document from Firestore using image.id
+      const db = getFirestore(app);
+      await deleteDoc(doc(db, "Gallery", image.id));
+  
+      // Updating the local gallery state
+      setGallery(gallery.filter((item) => item.id !== image.id));
+    } catch (error) {
+      console.error("Error deleting image:", error);
+    }
+  };
+  
+  
   return (
     <div>
       <h1>Admin Panel</h1>
@@ -215,16 +227,6 @@ const Admin = () => {
       >
         <div>
           <label>
-            Image Title:
-            <input
-              type="text"
-              value={imageTitle}
-              onChange={(e) => setImageTitle(e.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
             Image:
             <input type="file" onChange={(e) => setImage(e.target.files[0])} />
           </label>
@@ -236,7 +238,7 @@ const Admin = () => {
           <div key={image.id}>
             <h3>{image.title}</h3>
             <img src={image.url} alt={image.title} />
-            <button onClick={() => handleDeleteImage(image.id)}>Delete</button>
+            <button onClick={() => handleDeleteImage(image)}>Delete</button>
           </div>
         ))}
       </div>
