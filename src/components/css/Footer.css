@@ -1,0 +1,40 @@
+/* Footer.css */
+
+.footer {
+    background: #282c34;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .social-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  
+  .footer p {
+    color: aliceblue;
+  }
+  
+  /* Responsive Styles */
+  @media only screen and (max-width: 600px) {
+    .social-links {
+      align-items: center;
+      gap: 5px;
+    }
+  
+    .social-link {
+      font-size: 0.8rem;
+    }
+  }
+  

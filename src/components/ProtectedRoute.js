@@ -1,6 +1,6 @@
-import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
-import { getAuth } from 'firebase/auth';
+import React from "react";
+import { Route, Navigate } from "react-router-dom";
+import { getAuth } from "firebase/auth";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const auth = getAuth();

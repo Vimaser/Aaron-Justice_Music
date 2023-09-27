@@ -1,10 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import './App.css';
-import { Header, Footer, Home, Music, Events, Gallery, Contact, Login, Admin } from './components';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import React, { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import "./App.css";
+import {
+  Header,
+  Footer,
+  Home,
+  Music,
+  Events,
+  Gallery,
+  Contact,
+  Login,
+  Admin,
+} from "./components";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import "../src/components/css/main.css";
 
-const App = () => {
+const AppContent = () => {
+  const location = useLocation();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const auth = getAuth();
 
@@ -17,7 +35,7 @@ const App = () => {
   }, [auth]);
 
   return (
-    <Router>
+    <>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -26,9 +44,22 @@ const App = () => {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={isAuthenticated ? <Admin /> : <Navigate to="/login" replace />} />
+        <Route
+          path="/admin"
+          element={
+            isAuthenticated ? <Admin /> : <Navigate to="/login" replace />
+          }
+        />
       </Routes>
-      <Footer />
+      {location.pathname !== "/admin" && <Footer />}
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 };

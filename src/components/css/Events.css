@@ -1,0 +1,39 @@
+/* Events.css */
+
+div {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #4CAF50;
+  }
+  
+  section {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  article {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  .events-background {
+    background-image: url('../../img/homebg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }  

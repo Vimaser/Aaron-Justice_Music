@@ -14,3 +14,8 @@ Good Lord... So when uploading the images the saveState name was not the same th
 Alright, images are deleting and are no longer persistent on the frontEnd. Talked with some friends from the "blue websight" and the issue is/was frontEnd mac doesn't play well with backEnd linux on image naming conventions. using a uuid was recommended, but I found another work around. I'm debating the audio upload, while it does look good portfolio wise, it goes beyond the scope of this project. The original plane of just storing the html embedded links in an array on the backend will save on storage space.
 
 Very cool, will probably start styling tomorrow. 
+
+Music URL works, displaying iframe works and added sandbox for security.
+
+WED 09/27/2023
+Site is fully functional, now working on styling. Had to inline style Home.js Ooof... Yeah-yeah I know never inline style. CSSTransition is pretty cool. Alright basic styling is done, I'm fairly satisfied with it, don't care for the exorcist pea soup green for the header, button, and h1 tags--but those are meant to be changed based on the customer's preference. Probably going to save a version of this as a template if I have to build another band/muscian's website. I just need to upload to netlify from git and see how it actually looks in practice on mobile and not Chrome's version. Cool beans.

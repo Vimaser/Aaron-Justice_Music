@@ -1,0 +1,82 @@
+/* Admin.css */
+
+.admin-container {
+    padding: 40px;
+    background-color: #f0f0f0;
+  }
+  
+  .section {
+    margin-bottom: 50px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 30px;
+  }
+  
+  .section-header {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .button,
+  .delete-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .button:hover,
+  .delete-button:hover {
+    background-color: #45a049;
+  }
+  
+  .delete-button {
+    background-color: #e74c3c;
+  }
+  
+  .delete-button:hover {
+    background-color: #c0392b;
+  }
+  
+  .item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+  }
+  
+  .item h3 {
+    margin-top: 0;
+  }
+  
+  .item img {
+    max-width: 100%;
+    border-radius: 4px;
+  }
+  
+  .warning-text {
+    color: #e74c3c;
+    font-weight: 600;
+  }
+  
