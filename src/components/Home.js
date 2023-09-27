@@ -28,7 +28,9 @@ const Home = () => {
 
   return (
     <div className="home-background">
+      <section>
       <h1>Welcome to Aaron Justice Music!</h1>
+      </section>
       <section>
         <p>
           Aaron Justice is a talented musician known for his soulful tunes and

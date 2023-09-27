@@ -70,7 +70,9 @@ const Gallery = () => {
         backgroundImage: `url(${backgroundImages[backgroundIndex]})`,
       }}
     >
-      <h1>Gallery</h1>
+      <section>
+        <h1>Gallery</h1>
+      </section>
       <section>
         {images.map((image, index) => (
           <figure key={index}>

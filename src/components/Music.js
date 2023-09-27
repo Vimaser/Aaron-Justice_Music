@@ -21,7 +21,9 @@ const Music = () => {
   return (
     <div className="music-background">
       <div className="music-container">
+        <section>
         <h1>Music</h1>
+        </section>
         {musicList.map((music, index) => (
           <div key={index} className="music-item">
             <h2>{music.title}</h2>

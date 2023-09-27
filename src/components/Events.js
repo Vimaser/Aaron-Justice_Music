@@ -23,7 +23,9 @@ const Events = () => {
 
   return (
     <div className="events-background">
+      <section>
       <h1>Upcoming Events</h1>
+      </section>
       <section>
         {events.length ? (
           events.map((event) => (

@@ -28,13 +28,16 @@ const Contact = () => {
 
   return (
     <div className="contact-background">
-      <h1>Contact Info</h1>
+      <section>
+        <h1>Contact Info</h1>
+      </section>
       <section>
         <h2>Aaron's Email:</h2>
         <p>aaronjusticemusic@gmail.com</p>
       </section>
-
-      <h1>Contact Aaron Directly</h1>
+      <section>
+        <h1>Contact Aaron Directly</h1>
+      </section>
       <section>
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Name:</label>
