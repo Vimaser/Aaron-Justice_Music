@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { getAuth, signOut } from "firebase/auth";
 import {
   getFirestore,
   collection,
@@ -49,7 +50,7 @@ const Admin = () => {
 
   const handleDeleteMessage = async (messageId) => {
     const db = getFirestore();
-    const messageRef = doc(db, 'Messages', messageId); 
+    const messageRef = doc(db, "Messages", messageId);
     try {
       await deleteDoc(messageRef);
       console.log("Document successfully deleted!");
@@ -234,16 +235,30 @@ const Admin = () => {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      const authInstance = getAuth(app);
+      await signOut(authInstance);
+      console.log("User signed out");
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+  
+
   return (
     <div className="admin-container">
       <h1>Admin Panel</h1>
-      <br/>
+      <br />
+      <section className="section">
+      <p className="warning-text">ALWAYS LOGOUT WHEN DONE!</p>
+      <button onClick={handleLogout}>Logout</button>
+      </section>
 
       {/* Event Form */}
       <h2>Event Management:</h2>
       <section className="section">
-        
-        <br/>
+        <br />
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -281,8 +296,9 @@ const Admin = () => {
             </label>
           </div>
           <button type="submit">Add Event</button>
-        </form></section>
-        <section>
+        </form>
+      </section>
+      <section>
         {events.map((event) => (
           <div key={event.id}>
             <h3>{event.eventName}</h3>
@@ -290,14 +306,13 @@ const Admin = () => {
             <p>{event.location}</p>
             <button onClick={() => handleDeleteEvent(event.id)}>Delete</button>
           </div>
-        ))}</section>
-      
+        ))}
+      </section>
 
-      
-      <section/>
+      <section />
       {/* Gallery Form */}
       <section className="section">
-       <h2>Gallery Management:</h2>
+        <h2>Gallery Management:</h2>
         <p className="warning-text">
           Please try to keep a limit on the number of images. Total storage is 1
           GiB, please do not exceed 200 photos otherwise I will be charged for
