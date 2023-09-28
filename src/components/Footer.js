@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./css/Footer.css";
 
 const Footer = () => {
@@ -38,6 +39,9 @@ const Footer = () => {
         >
           YouTube
         </a>
+        <Link to="/admin" className="social-link">
+          Admin Portal
+        </Link>
       </div>
     </footer>
   );
