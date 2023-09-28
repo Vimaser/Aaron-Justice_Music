@@ -19,3 +19,5 @@ Music URL works, displaying iframe works and added sandbox for security.
 
 WED 09/27/2023
 Site is fully functional, now working on styling. Had to inline style Home.js Ooof... Yeah-yeah I know never inline style. CSSTransition is pretty cool. Alright basic styling is done, I'm fairly satisfied with it, don't care for the exorcist pea soup green for the header, button, and h1 tags--but those are meant to be changed based on the customer's preference. Probably going to save a version of this as a template if I have to build another band/muscian's website. I just need to upload to netlify from git and see how it actually looks in practice on mobile and not Chrome's version. Cool beans.
+
+Project done, setup a .env for security measures. Should have done that first, rookie mistake :/
