@@ -45,7 +45,6 @@ const Home = () => {
       {/* Yeah I know I broke the cardinal rule of putting inline styles... Sue me. */}
 
       <section>
-        
         <CSSTransition
           in={inProp}
           timeout={1000}
@@ -55,30 +54,20 @@ const Home = () => {
           <img src={images[currentImageIndex]} alt="Aaron Justice" />
         </CSSTransition>
         <p>
-          Meet Aaron Justice – a man whose guitar strings vibrate with love,
-          faith, and a deep sense of devotion. In the world of Christian music,
-          Aaron has carved a niche with his soulful melodies and heartfelt
-          lyrics that resonate with the warmth of family and the joy of life’s
-          blessings. Growing up surrounded by the harmony of a close-knit family
-          and the rhythm of unwavering faith, Aaron’s music became a reflection
-          of his journey. Each song tells a story of hope, celebrates the
-          strength found in belief, and spreads a message of positivity and
-          love. Aaron isn’t just crafting tunes; he’s sharing pieces of his
-          soul, inviting listeners to join him in celebrating the beauty of life
-          and faith. But Aaron is more than a musician. He's a family man,
-          grounded by the love and support of his loved ones, who are not just
-          his biggest fans but also his greatest inspiration. The laughter of
-          family gatherings, the harmony of Sunday mornings, and the rhythm of
-          everyday life – these are the melodies that inspire Aaron’s music.
-          With his guitar in hand and a heart full of passion, Aaron Justice is
-          a melody-maker who brings light to the world. His songs are a
-          harmonious blend of uplifting lyrics and acoustic warmth, a musical
-          journey that inspires reflection, gratitude, and joy. In every chord
-          and every word, Aaron is reaching out, touching hearts, and spreading
-          a little bit of love and a whole lot of faith. Welcome to the world of
-          Aaron Justice Music – where every note is a message of hope, every
-          song is a celebration of faith, and every melody is inspired by the
-          love of family.
+          Meet Aaron Justice – His desire is to share the love and hope that we
+          have in Jesus to the world through his music. The very first song that
+          he wrote was called, "All I Need,' which spoke of how God pulled him
+          through depression after his parent's divorce and grandfather's death
+          at the impressionable age of just 16. That was when Aaron knew the
+          calling that God had placed on his life was to show hurting people
+          that God is with them in the toughest of times and they are never
+          alone through his music. Each song that he writes tells a part of his
+          story and testimony, both the highs and the lows throughout his life.
+          His prayer is that through his songs he can spread the message that
+          everyone is loved, that everyone has a purpose, and that God has a
+          plan for their lives. Having served in the Army, he has a special
+          place in his heart for the men and women in military and the unique
+          challenges they face.
         </p>
       </section>
       <section>
