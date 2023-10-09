@@ -15,6 +15,10 @@ const Events = () => {
         ...doc.data(),
         id: doc.id,
       }));
+      eventsList.sort(
+        (a, b) =>
+          b.eventDate.toDate().getTime() - a.eventDate.toDate().getTime()
+      );
       setEvents(eventsList);
     };
 
@@ -24,7 +28,7 @@ const Events = () => {
   return (
     <div className="events-background">
       <section>
-      <h1>Upcoming Events</h1>
+        <h1>Upcoming Events</h1>
       </section>
       <section>
         {events.length ? (
