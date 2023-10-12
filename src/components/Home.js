@@ -5,7 +5,7 @@ import "./css/Home.css";
 import AJImage1 from "../img/aj.jpg";
 import AJImage2 from "../img/homebg.jpg";
 import AJImage3 from "../img/musicbg.jpg";
-import AJlogo from "../img/arronJustice.png";
+import AJlogo from "../img/aaronJustice.jpg";
 
 const Home = () => {
   const images = [AJImage1, AJImage2, AJImage3];
